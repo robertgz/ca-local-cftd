@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-// import { GQLApolloClient } from './GraphQL/GQLApolloClient';
+import { GQLApolloClient } from './GraphQL/GQLApolloClient';
 // import { CandidateCard } from './candidate/CandidateCard';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 // import CandidatesAppBar from './candidates/CandidatesAppBar';
@@ -27,7 +27,7 @@ root.render(
   <React.StrictMode>
     <App></App>
     <BrowserRouter>
-      {/* <GQLApolloClient> */}
+      <GQLApolloClient>
         <Routes>
 
           <Route 
@@ -41,7 +41,7 @@ root.render(
           {/* <Route path="candidates" element={<CandidatesAppBar />} /> */}
 
         </Routes>
-      {/* </GQLApolloClient> */}
+      </GQLApolloClient>
     </BrowserRouter>
   </React.StrictMode>
 );
