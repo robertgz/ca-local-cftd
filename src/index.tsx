@@ -28,7 +28,6 @@ root.render(
     <BrowserRouter>
       <GQLApolloClient>
         <Routes>
-          <App></App>
 
           <Route 
             path="/"
@@ -41,6 +40,7 @@ root.render(
           {/* <Route path="candidates" element={<CandidatesAppBar />} /> */}
 
         </Routes>
+        <App></App>        
       </GQLApolloClient>
     </BrowserRouter>
   </React.StrictMode>
