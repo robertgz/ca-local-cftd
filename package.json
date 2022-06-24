@@ -2,7 +2,7 @@
   "name": "ca-local-cftd",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://robertgz.github.io/ca-local-cftd/",
+  "homepage": "https://robertgz.github.io/ca-local-cftd/",
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@emotion/react": "^11.9.3",
@@ -17,6 +17,7 @@
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "cross-env": "^7.0.3",
     "echarts": "^5.3.3",
     "echarts-for-react": "^3.0.2",
     "graphql": "^16.5.0",
