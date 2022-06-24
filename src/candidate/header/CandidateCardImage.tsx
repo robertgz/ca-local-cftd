@@ -19,7 +19,7 @@ export const CandidateCardImage: FunctionComponent<CandidateIDProps> = (props: C
   if (loading || error || !data?.candidate) return defaultElement;
   
   const { imageUrl, fullName } = data.candidate;
-  const imagePath = imageUrl ? `${process.env.REACT_APP_API_URL}/${imageUrl}` : profile;
+  const imagePath = imageUrl ? `${process.env.REACT_APP_PRODUCTION_API_URL}/${imageUrl}` : profile;
   
   return( 
     <div style={styles.container}>

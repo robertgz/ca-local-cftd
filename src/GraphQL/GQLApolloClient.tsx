@@ -4,13 +4,14 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 
-const APP_ENV = process.env.REACT_APP_ENVIRONMENT;
-const host = APP_ENV === 'local' 
-  ? process.env.REACT_APP_LOCAL_API_URL
-  : (APP_ENV === 'staging' 
-    ? process.env.REACT_APP_STAGING_API_URL 
-    : process.env.REACT_APP_PRODUCTION_API_URL
-    );
+const ENV_API = process.env.REACT_APP_API;
+
+let host = process.env.REACT_APP_PRODUCTION_API_URL;
+if (ENV_API === 'local') {
+  host = process.env.REACT_APP_LOCAL_API_URL;
+} else if (ENV_API === 'staging') {
+  host = process.env.REACT_APP_STAGING_API_URL;
+}
 
 const uri = `${host}/graphql`;
 
