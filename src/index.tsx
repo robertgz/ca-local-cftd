@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-// import { GQLApolloClient } from './GraphQL/GQLApolloClient';
+import { GQLApolloClient } from './GraphQL/GQLApolloClient';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import App from './App';
 import { Links } from './Links';
@@ -27,7 +27,7 @@ root.render(
   <React.StrictMode>
     {/* <BrowserRouter basename='/ca-local-cftd'> */}
     <BrowserRouter>
-      {/* <GQLApolloClient> */}
+      <GQLApolloClient>
         <Routes>
 
           <Route 
@@ -42,7 +42,7 @@ root.render(
 
           <Route path="app" element={<App/>}></Route>
         </Routes>
-      {/* </GQLApolloClient> */}
+      </GQLApolloClient>
     </BrowserRouter>
   </React.StrictMode>
 );
