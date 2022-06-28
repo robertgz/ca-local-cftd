@@ -4,10 +4,11 @@ import { FunctionComponent, useContext  } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_CANDIDATE_INFO } from '../../../GraphQL/GetCandidateInfoQuery';
 import { CandidateContext } from '../../../context/state';
+import styles from './CandidateCardDescription.module.css';
 
 export const CandidateCardDescription: FunctionComponent = () => {
 
-  const DefaultName = <div style={styles.description} >Description / Job Title of Candidate Campaigning for Office</div>;
+  const DefaultName = <div className={styles.description} >Description / Job Title of Candidate Campaigning for Office</div>;
   
   const { id: candidateId } = useContext(CandidateContext);
 
@@ -19,17 +20,5 @@ export const CandidateCardDescription: FunctionComponent = () => {
   
   const { description } = data.candidate;
   
-  return( <div style={styles.description} >{ description }</div> );
+  return( <div className={styles.description} >{ description }</div> );
 }
-
-
-export interface StylesDictionary{
-  [Key: string]: React.CSSProperties;
-}
-
-const styles: StylesDictionary = {
-  description: {
-    hyphens: 'auto',
-    fontSize: '0.9em',
-  },
-};
