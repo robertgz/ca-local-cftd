@@ -1,6 +1,6 @@
 
 .sectionHeader, .committeeFinancesSection {
-  --dashBoard-blue: #16375D;
+  --dashboard-blue: #16375D;
 }
 
 .outerContainer {
@@ -13,14 +13,14 @@
 .sectionHeader {
   font-size: 0.8em;
   color: white;
-  background-color: var(--dashBoard-blue);
+  background-color: var(--dashboard-blue);
   padding: 5px;
 }
 
 .committeeFinancesSection {
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid var(--dashBoard-blue);
+  border-bottom: 2px solid var(--dashboard-blue);
 }
 
 .outsideCommitteeSection {
