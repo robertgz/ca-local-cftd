@@ -1,0 +1,29 @@
+
+.sectionHeader, .committeeFinancesSection {
+  --dashBoard-blue: #16375D;
+}
+
+.outerContainer {
+  min-height: 400px;
+  width: 360px;
+  background-color: #f8f9fa;
+  border-style: solid;
+}
+
+.sectionHeader {
+  font-size: 0.8em;
+  color: white;
+  background-color: var(--dashBoard-blue);
+  padding: 5px;
+}
+
+.committeeFinancesSection {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid var(--dashBoard-blue);
+}
+
+.outsideCommitteeSection {
+  display: flex;
+  flex-direction: column;
+}

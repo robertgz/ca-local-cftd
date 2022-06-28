@@ -5,6 +5,7 @@ import { CandidateIDProps } from '../../models/CandidateIDProps.model';
 import { CandidateCardCommittee } from '../committee/CandidateCardCommittee';
 import { CandidateCardOutsideSpendingCommittees } from '../outsideCommittee/CandidateCardOutsideSpendingCommittees';
 import { CandidateContext } from '../../context/state';
+import styles from './CandidateCardLayout.module.css';
 
 export default function CandidateCardLayout(props: CandidateIDProps){
 
@@ -17,21 +18,21 @@ export default function CandidateCardLayout(props: CandidateIDProps){
 
   return (
     <div>
-      <div style={styles.outerContainer} className="CandidateCard" >
+      <div className={styles.outerContainer} >
         <CandidateCardHeader/>
 
-        <div style={styles.committeeFinancesSection}>
+        <div className={styles.committeeFinancesSection}>
           <div>
-            <span style={styles.sectionHeader}>
+            <span className={styles.sectionHeader}>
               Candidate Committee Finances
             </span>
           </div>
           <CandidateCardCommittee/>
         </div>
 
-        <div style={styles.outsideCommitteeSection}>
+        <div className={styles.outsideCommitteeSection}>
           <div>
-            <span style={styles.sectionHeader}>
+            <span className={styles.sectionHeader}>
               Outside Money Spent for Candidate by other Committees
             </span>
             <CandidateCardOutsideSpendingCommittees/>
@@ -42,34 +43,3 @@ export default function CandidateCardLayout(props: CandidateIDProps){
     </div>
   );
 }
-
-
-interface StylesDictionary{
-  [Key: string]: React.CSSProperties;
-}
-
-const DashBoardBlue = '#16375D';
-
-const styles: StylesDictionary = {
-  outerContainer: {
-    minHeight: '400px',
-    width: '360px',
-    backgroundColor: '#f8f9fa',
-    borderStyle: 'solid',
-  },
-  sectionHeader: {
-    fontSize: '0.8em',
-    color: 'white',
-    backgroundColor: DashBoardBlue,
-    padding: '5px',
-  },
-  committeeFinancesSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    borderBottom: `2px solid ${DashBoardBlue}`,
-  },
-  outsideCommitteeSection: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-};
