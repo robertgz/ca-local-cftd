@@ -4,8 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3005",
-    "start:local:db": "cross-env REACT_APP_API='local' npm run dev",
-    "start:staging:db": "cross-env REACT_APP_API='staging' npm run dev",
     "build": "next build",
     "start": "next start -p $PORT",
     "lint": "next lint"
@@ -15,7 +13,6 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.5",
     "apollo-server-micro": "^3.9.0",
-    "cross-env": "^7.0.3",
     "echarts": "^5.3.3",
     "echarts-for-react": "^3.0.2",
     "graphql": "^16.5.0",
