@@ -38,6 +38,7 @@ export const ElectionSelect = (props: Props) => {
         agencyId: filters?.agencyIds?.[0],
         electionYear: filters?.year,
       }},
+      context: { clientName: "third" },
     });
     if (loading) return <p>Loading...</p>;
     if (error) return <p>`Error! ${error.message}`</p>;
@@ -54,7 +55,7 @@ export const ElectionSelect = (props: Props) => {
         onChange={handleChange}
       >
         { elections?.map((election: any) => (
-          <MenuItem key={election.id} value={election.id}>{election.name}</MenuItem>
+          <MenuItem key={election.id} value={election.id}>{election.date}</MenuItem>
         ))}
       </Select>
     )

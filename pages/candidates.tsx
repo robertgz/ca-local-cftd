@@ -1,6 +1,6 @@
 
 import { ApolloProvider } from "@apollo/client";
-import client from "../apollo-client";
+import client from "../src/apollo-client";
 import CandidatesAppBar from "../src/components/candidates/CandidatesAppBar";
 
 function Candidates() {

@@ -2,13 +2,15 @@ import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import React from "react"
 import { AgencySelect } from "./AgencySelect";
 import { CandidateFilters } from "../../models/CandidateFilters";
-// import { ElectionSelect } from "./ElectionSelect";
+import { ElectionSelect } from "./ElectionSelect";
 // import { OfficeSelect } from "./OfficeSelect";
 import { YearSelect } from "./YearSelect";
 
 interface Props {
   filters: CandidateFilters;
-  setFilters: any;
+  // setFilters: any;
+  // setFilters(value: ({})): void;
+  setFilters: (value: object) => void;
 }
 
 // query the graph to find out the available years
@@ -23,17 +25,17 @@ export const CandidateListFilters = (props: Props) => {
       ...filters,
       [event.target.name]: event.target.checked,
     })
-    // console.log({filters})
+    console.log({filters})
   };
 
   return(
     <React.Fragment>
       Candidate Filters
       <AgencySelect filters={filters} setFilters={setFilters}/>
-      <YearSelect filters={filters} setFilters={setFilters}/>
-      {/* <ElectionSelect filters={filters} setFilters={setFilters}/> */}
+      {/* <YearSelect filters={filters} setFilters={setFilters}/> */}
+      <ElectionSelect filters={filters} setFilters={setFilters}/>
       {/* <OfficeSelect filters={filters} setFilters={setFilters}/> */}
-      <FormGroup>
+      {/* <FormGroup>
         <FormControlLabel 
           control={
             <Switch 
@@ -54,7 +56,7 @@ export const CandidateListFilters = (props: Props) => {
           } 
           label="Qualified for General" 
         />
-      </FormGroup>
+      </FormGroup> */}
     </React.Fragment>
   ); 
 }

@@ -5,7 +5,8 @@ export const GET_ELECTIONS = gql`
     elections(filters: $filters) {
       id
       name
-      year
+      # year
+      date
       agencyId
     }
   }

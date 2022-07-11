@@ -3,6 +3,7 @@ import { FunctionComponent, useContext } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_CANDIDATE_INFO } from '../../../GraphQL/GetCandidateInfoQuery';
 import { CandidateContext } from '../../../context/state';
+// import { GET_TEMP } from '../../../GraphQL/local/tempQuery';
 
 export const CandidateCardName: FunctionComponent = () => {
 
@@ -14,6 +15,14 @@ export const CandidateCardName: FunctionComponent = () => {
     variables: { candidateId },
   });
 
+  // {
+  //   const { loading, error, data } = useQuery(GET_TEMP, {
+  //     context: { clientName: "second" }
+  //   });
+  
+  //   if (!(loading || error || !data?.candidate)) console.log({ data });
+  // }
+  
   if (loading || error || !data?.candidate) return DefaultName;
   
   const { fullName } = data.candidate;

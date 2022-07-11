@@ -1,0 +1,37 @@
+
+type Agency {
+  id: String # MD5 of lower case name + software
+  name: String
+  software: String
+  urlToken: String
+  elections: [Election]
+}
+
+type Query {
+  agencies: [Agency!]!
+  # agencies(filters: AgencyFilters): [Agency!]!
+  agency(id: String!): Agency
+}
+
+
+input AgencyItemInput {
+  name: String!
+}
+
+input CreateAgenciesInput {
+  agencyItems: [AgencyItemInput!]!
+  software: String
+}
+
+input CreateAgencyInput {
+  name: String!
+  software: String!
+  urlToken: String!
+}
+
+# Mutations require authorization
+type Mutation {
+  createAgency(input: CreateAgencyInput!): Agency
+  createAgencies(input: CreateAgenciesInput!): [Agency]
+  deleteAgency(id: String!): Agency
+}

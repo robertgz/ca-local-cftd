@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Agency {
+  id String @id  @default(auto()) @map("_id") @db.ObjectId
+  name String
+  software String
+  urlToken String
+  elections Election[]
+  @@unique([software, urlToken])
+  // npx prisma db push
+}
+
+model Election {
+  id String @id  @default(auto()) @map("_id") @db.ObjectId
+  date String
+  name String?
+  type String?
+  agency Agency @relation(fields: [agencyId], references: [id])
+  agencyId String @db.ObjectId
+}

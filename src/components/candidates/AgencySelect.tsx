@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useQuery } from '@apollo/client';
-import { GET_AGENCIES } from '../../GraphQL/GetAgenciesQuery';
+import { Agency, GET_AGENCIES } from '../../GraphQL/local/GetAgenciesQuery';
 import { CandidateFilters } from '../../models/CandidateFilters';
 
 interface Props {
@@ -24,9 +24,13 @@ export const AgencySelect = (props: Props) => {
   };
 
   const GetAgencies = () => {
-    const { loading, error, data } = useQuery(GET_AGENCIES);
+    // const { agencies } = data;
+    const { loading, error, data } = useQuery(GET_AGENCIES, {
+      context: { clientName: "second" }
+    });
     if (loading) return <p>Loading...</p>;
     if (error) return <p>`Error! ${error.message}`</p>;
+    console.log( data )
     const { agencies } = data;
 
     const value = (filters.agencyIds?.[0]) ? (filters.agencyIds?.[0]) : '';

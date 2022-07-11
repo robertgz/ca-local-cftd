@@ -1,0 +1,44 @@
+
+type Election {
+  id: String # md5 of lower case (date + type + agency name)
+  date: String # Examples: 06/07/2022, 03/03/2020
+  # year: String # Examples: 2022, 2020
+  type: String # Examples: Primary, General
+  name: String # Examples: 06/07/2022 Primary Election, 03/03/2020 General Elections
+  agencyId: String
+}
+
+input ElectionItemInput {
+  date: String!
+  type: String
+}
+
+input CreateElectionInput {
+  agencyId: String!
+  date: String!
+  type: String
+}
+
+input CreateElectionsInput {
+  agencyId: String!
+  electionItems: [ElectionItemInput!]!
+}
+
+# Mutations require authorization
+type Mutation {
+  createElection(input: CreateElectionInput!): Election
+  createElections(input: CreateElectionsInput!): [Election]
+  deleteElection(id: String!): String
+}
+
+
+input ElectionFilters {
+  agencyId: String!
+  electionYear: String
+  # year: String # replaces electionYear?
+}
+
+type Query {
+  election(id: String!): Election
+  elections(filters: ElectionFilters): [Election!]!
+}

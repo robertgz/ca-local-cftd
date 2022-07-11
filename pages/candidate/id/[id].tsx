@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { NextPageWithLayout } from "../../_app";
 import { CandidateContextLayout } from "../../../src/components/layouts/CandidateContextLayout";
 import CandidateCardLayout from "../../../src/components/layouts/CandidateCardLayout";
-import client from "../../../apollo-client";
+import client from "../../../src/apollo-client";
 
 const Candidate: NextPageWithLayout = () => {
   const router = useRouter();
