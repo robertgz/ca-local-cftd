@@ -1,0 +1,25 @@
+
+type Candidate {
+  id: String
+  name: String
+  lastName: String
+  firstName: String
+  office: String
+
+  election: Election
+  # committee: Committee?
+  # the candidate's committee needs to include a year in the name, the candidate's last name
+}
+
+input CreateCandidateInput {
+  electionId: String!
+  name: String!
+  lastName: String!
+  firstName: String!
+  office: String!
+}
+
+type Mutation {
+  createCandidate(input: CreateCandidateInput!): Candidate
+  # deleteCandidate(id: String!): Candidate
+}

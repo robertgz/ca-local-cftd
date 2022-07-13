@@ -29,7 +29,7 @@ input CreateAgencyInput {
   urlToken: String!
 }
 
-# Mutations require authorization
+# Mutations should require authorization
 type Mutation {
   createAgency(input: CreateAgencyInput!): Agency
   createAgencies(input: CreateAgenciesInput!): [Agency]

@@ -1,0 +1,16 @@
+
+type BallotItem {
+  name: String
+  district: String
+  jurisdiction: String
+  # election: Election
+  # electionDate: String
+}
+
+type Committee {
+  id: String
+  name: String
+  # measure: String
+  ballotItems: [BallotItem]
+  electionId: String
+}

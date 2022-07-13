@@ -132,6 +132,13 @@ const resolvers: Resolvers = {
         }
       });
     },
+    createCandidate: async (parent, args, context: Context) => {
+      const { electionId, name, lastName, firstName, office } = args.input;
+      const candidate = { electionId, name, lastName, firstName, office };
+
+      console.log({ candidate });
+      return candidate;
+    },
   },
   Agency: {
     elections: async (parent, args, context: Context, ) => {

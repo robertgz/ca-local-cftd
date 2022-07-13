@@ -48,3 +48,32 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 Package install
 npm install ../campaign-finance-downloader
+
+NOTES:
+For SouthTech filers
+For a filer to be a candidate
+Get list of filers
+Filter filers to include those with a last name
+If there are two filers with the same last name and ballot type check the forms links.
+  filers with a 501 will be a candidates, use the for candidate full name
+  those without and with a 410 will be a committee, use this to get the committee name for a candidate  
+
+Current URL pattern:
+https://www.southtechhosting.com/SanDiegoCounty/CampaignDocsWebRetrieval/
+https://www.southtechhosting.com/SanJoseCity/CampaignDocsWebRetrieval/
+
+Sites using SouthTech with different URL pattern:
+https://campaigndocs.co.fresno.ca.us/CampaignDocsWebRetrieval/
+
+
+DATA Modeling
+Software: NetFile, SouthTech, SDeFile
+Agency: CCV: NetFile, San Diego County: SouthTech, San Diego City: SDeFile 
+Jurisdiction: City of Chula Vista, CORONADO UNIFIED SCHOOL, City of Davis, City of San Diego
+District: CIty Council District 1, County, State, Fire Protection, Water
+
+
+Needed for each software: getJurisdictions(), getDistricts()
+
+getJurisdictions() uses election year or date and will return 1 or more Jurisdictions
+In SouthTech use 'Ballot Item'

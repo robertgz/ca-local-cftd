@@ -25,6 +25,29 @@ model Election {
   date String
   name String?
   type String?
+
   agency Agency @relation(fields: [agencyId], references: [id])
   agencyId String @db.ObjectId
+
+  candidates Candidate[]
+}
+
+model Candidate {
+  id String @id  @default(auto()) @map("_id") @db.ObjectId
+  name String
+  lastName String
+  firstName String
+  office String
+
+  election Election @relation(fields: [electionId], references: [id])
+  electionId String @db.ObjectId
+
+  // committeeId String @db.ObjectId
+}
+
+model Committee {
+  id String  @id  @default(auto()) @map("_id") @db.ObjectId
+  name String
+  measure String
+  electionId String
 }

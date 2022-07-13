@@ -5,7 +5,11 @@ type Election {
   # year: String # Examples: 2022, 2020
   type: String # Examples: Primary, General
   name: String # Examples: 06/07/2022 Primary Election, 03/03/2020 General Elections
+
   agencyId: String
+  agency: Agency
+  candidate: [Candidate]
+  committee: [Committee]
 }
 
 input ElectionItemInput {

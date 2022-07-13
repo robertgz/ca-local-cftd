@@ -27,6 +27,31 @@ export type AgencyItemInput = {
   name: Scalars['String'];
 };
 
+export type BallotItem = {
+  __typename?: 'BallotItem';
+  district?: Maybe<Scalars['String']>;
+  jurisdiction?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type Candidate = {
+  __typename?: 'Candidate';
+  election?: Maybe<Election>;
+  firstName?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  office?: Maybe<Scalars['String']>;
+};
+
+export type Committee = {
+  __typename?: 'Committee';
+  ballotItems?: Maybe<Array<Maybe<BallotItem>>>;
+  electionId?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
 export type CreateAgenciesInput = {
   agencyItems: Array<AgencyItemInput>;
   software?: InputMaybe<Scalars['String']>;
@@ -36,6 +61,14 @@ export type CreateAgencyInput = {
   name: Scalars['String'];
   software: Scalars['String'];
   urlToken: Scalars['String'];
+};
+
+export type CreateCandidateInput = {
+  electionId: Scalars['String'];
+  firstName: Scalars['String'];
+  lastName: Scalars['String'];
+  name: Scalars['String'];
+  office: Scalars['String'];
 };
 
 export type CreateElectionInput = {
@@ -51,7 +84,10 @@ export type CreateElectionsInput = {
 
 export type Election = {
   __typename?: 'Election';
+  agency?: Maybe<Agency>;
   agencyId?: Maybe<Scalars['String']>;
+  candidate?: Maybe<Array<Maybe<Candidate>>>;
+  committee?: Maybe<Array<Maybe<Committee>>>;
   date?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
@@ -72,6 +108,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createAgencies?: Maybe<Array<Maybe<Agency>>>;
   createAgency?: Maybe<Agency>;
+  createCandidate?: Maybe<Candidate>;
   createElection?: Maybe<Election>;
   createElections?: Maybe<Array<Maybe<Election>>>;
   deleteAgency?: Maybe<Agency>;
@@ -86,6 +123,11 @@ export type MutationCreateAgenciesArgs = {
 
 export type MutationCreateAgencyArgs = {
   input: CreateAgencyInput;
+};
+
+
+export type MutationCreateCandidateArgs = {
+  input: CreateCandidateInput;
 };
 
 
@@ -203,9 +245,13 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   Agency: ResolverTypeWrapper<Agency>;
   AgencyItemInput: AgencyItemInput;
+  BallotItem: ResolverTypeWrapper<BallotItem>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Candidate: ResolverTypeWrapper<Candidate>;
+  Committee: ResolverTypeWrapper<Committee>;
   CreateAgenciesInput: CreateAgenciesInput;
   CreateAgencyInput: CreateAgencyInput;
+  CreateCandidateInput: CreateCandidateInput;
   CreateElectionInput: CreateElectionInput;
   CreateElectionsInput: CreateElectionsInput;
   Election: ResolverTypeWrapper<Election>;
@@ -220,9 +266,13 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
   Agency: Agency;
   AgencyItemInput: AgencyItemInput;
+  BallotItem: BallotItem;
   Boolean: Scalars['Boolean'];
+  Candidate: Candidate;
+  Committee: Committee;
   CreateAgenciesInput: CreateAgenciesInput;
   CreateAgencyInput: CreateAgencyInput;
+  CreateCandidateInput: CreateCandidateInput;
   CreateElectionInput: CreateElectionInput;
   CreateElectionsInput: CreateElectionsInput;
   Election: Election;
@@ -242,8 +292,36 @@ export type AgencyResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type BallotItemResolvers<ContextType = any, ParentType extends ResolversParentTypes['BallotItem'] = ResolversParentTypes['BallotItem']> = ResolversObject<{
+  district?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  jurisdiction?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type CandidateResolvers<ContextType = any, ParentType extends ResolversParentTypes['Candidate'] = ResolversParentTypes['Candidate']> = ResolversObject<{
+  election?: Resolver<Maybe<ResolversTypes['Election']>, ParentType, ContextType>;
+  firstName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  lastName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  office?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type CommitteeResolvers<ContextType = any, ParentType extends ResolversParentTypes['Committee'] = ResolversParentTypes['Committee']> = ResolversObject<{
+  ballotItems?: Resolver<Maybe<Array<Maybe<ResolversTypes['BallotItem']>>>, ParentType, ContextType>;
+  electionId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type ElectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Election'] = ResolversParentTypes['Election']> = ResolversObject<{
+  agency?: Resolver<Maybe<ResolversTypes['Agency']>, ParentType, ContextType>;
   agencyId?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  candidate?: Resolver<Maybe<Array<Maybe<ResolversTypes['Candidate']>>>, ParentType, ContextType>;
+  committee?: Resolver<Maybe<Array<Maybe<ResolversTypes['Committee']>>>, ParentType, ContextType>;
   date?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -254,6 +332,7 @@ export type ElectionResolvers<ContextType = any, ParentType extends ResolversPar
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   createAgencies?: Resolver<Maybe<Array<Maybe<ResolversTypes['Agency']>>>, ParentType, ContextType, RequireFields<MutationCreateAgenciesArgs, 'input'>>;
   createAgency?: Resolver<Maybe<ResolversTypes['Agency']>, ParentType, ContextType, RequireFields<MutationCreateAgencyArgs, 'input'>>;
+  createCandidate?: Resolver<Maybe<ResolversTypes['Candidate']>, ParentType, ContextType, RequireFields<MutationCreateCandidateArgs, 'input'>>;
   createElection?: Resolver<Maybe<ResolversTypes['Election']>, ParentType, ContextType, RequireFields<MutationCreateElectionArgs, 'input'>>;
   createElections?: Resolver<Maybe<Array<Maybe<ResolversTypes['Election']>>>, ParentType, ContextType, RequireFields<MutationCreateElectionsArgs, 'input'>>;
   deleteAgency?: Resolver<Maybe<ResolversTypes['Agency']>, ParentType, ContextType, RequireFields<MutationDeleteAgencyArgs, 'id'>>;
@@ -269,6 +348,9 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Agency?: AgencyResolvers<ContextType>;
+  BallotItem?: BallotItemResolvers<ContextType>;
+  Candidate?: CandidateResolvers<ContextType>;
+  Committee?: CommitteeResolvers<ContextType>;
   Election?: ElectionResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
